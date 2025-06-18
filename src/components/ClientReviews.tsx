@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -78,103 +79,99 @@ const ClientReviews = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900/20 to-indigo-900/20 relative overflow-hidden">
+    <section className="py-24 bg-white relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.3),transparent_60%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.3),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-bold mb-8 text-white">
-            Client <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Reviews</span>
+          <h2 className="text-6xl font-bold mb-8 text-gray-900">
+            Client <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Reviews</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto relative">
-          {/* Review Card */}
+        <div className="max-w-6xl mx-auto relative">
+          {/* Main review card */}
           <div className="relative">
-            <Card className="bg-gradient-to-br from-slate-800/95 to-blue-900/20 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden">
+            <Card className="bg-gradient-to-br from-slate-800 to-slate-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl">
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-slate-500/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-600/5 to-slate-500/10"></div>
               
-              <CardContent className="p-12 text-center relative z-10">
-                {/* Large quotation marks */}
-                <div className="text-8xl text-blue-500/20 font-serif leading-none mb-8">"</div>
+              <CardContent className="p-16 text-center relative z-10">
+                {/* Progress dots */}
+                <div className="flex justify-center items-center gap-3 mb-12">
+                  {reviews.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentReview(index);
+                        setProgress(0);
+                      }}
+                      className={`transition-all duration-500 rounded-full ${
+                        index === currentReview 
+                          ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-indigo-500' 
+                          : 'w-3 h-3 bg-gray-400 hover:bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
                 
                 {/* Rating */}
                 <div className="flex justify-center items-center gap-2 mb-8">
                   {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                    <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-8 w-8 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
                 
                 {/* Review text */}
-                <blockquote className="text-white text-2xl leading-relaxed mb-12 font-light italic max-w-4xl mx-auto transition-all duration-500">
-                  {reviews[currentReview].review}
+                <blockquote className="text-white text-3xl leading-relaxed mb-16 font-light italic max-w-5xl mx-auto transition-all duration-500">
+                  "{reviews[currentReview].review}"
                 </blockquote>
                 
                 {/* Author */}
-                <div className="flex items-center justify-center gap-6">
+                <div className="flex items-center justify-center gap-8">
                   <div className="relative">
-                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-75"></div>
+                    <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-75"></div>
                     <img 
                       src={reviews[currentReview].avatar} 
                       alt={reviews[currentReview].name}
-                      className="relative w-20 h-20 rounded-full object-cover border-4 border-blue-500/50 transition-transform duration-500 hover:scale-110"
+                      className="relative w-24 h-24 rounded-full object-cover border-4 border-blue-500/50 transition-transform duration-500"
                     />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-white text-xl mb-1">{reviews[currentReview].name}</div>
-                    <div className="text-gray-300 text-base">{reviews[currentReview].position}</div>
-                    <div className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
+                    <div className="font-bold text-white text-2xl mb-2">{reviews[currentReview].name}</div>
+                    <div className="text-gray-300 text-lg">{reviews[currentReview].position}</div>
+                    <div className="text-base font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Navigation arrows */}
+            {/* Navigation arrows - positioned outside content area */}
             <button
               onClick={prevReview}
-              className="absolute left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group z-10"
             >
               <span className="text-2xl group-hover:-translate-x-1 transition-transform duration-300">‹</span>
             </button>
             
             <button
               onClick={nextReview}
-              className="absolute right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group z-10"
             >
               <span className="text-2xl group-hover:translate-x-1 transition-transform duration-300">›</span>
             </button>
           </div>
 
           {/* Progress Bar */}
-          <div className="mt-8 w-full bg-slate-700/50 rounded-full h-1">
+          <div className="mt-12 w-full bg-gray-200 rounded-full h-2 max-w-md mx-auto">
             <div 
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-1 rounded-full transition-all duration-100 ease-linear"
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full transition-all duration-100 ease-linear"
               style={{ width: `${progress}%` }}
             ></div>
-          </div>
-
-          {/* Navigation dots */}
-          <div className="flex justify-center mt-6 gap-3">
-            {reviews.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentReview(index);
-                  setProgress(0);
-                }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentReview 
-                    ? 'bg-gradient-to-r from-blue-500 to-indigo-500 w-8' 
-                    : 'bg-gray-600 hover:bg-gray-500'
-                }`}
-              />
-            ))}
           </div>
         </div>
       </div>
