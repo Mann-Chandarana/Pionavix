@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,6 +6,7 @@ import { useState, useEffect } from "react";
 const ClientReviews = () => {
   const { t } = useLanguage();
   const [currentReview, setCurrentReview] = useState(0);
+  const [progress, setProgress] = useState(0);
   
   const reviews = [
     {
@@ -47,72 +47,67 @@ const ClientReviews = () => {
     }
   ];
 
-  // Auto-slide functionality
+  // Auto-slide functionality with progress
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentReview((prev) => (prev + 1) % reviews.length);
-    }, 4000);
-    return () => clearInterval(interval);
+      setProgress(0);
+    }, 5000);
+
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) return 0;
+        return prev + 2;
+      });
+    }, 100);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(progressInterval);
+    };
   }, [reviews.length]);
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev + 1) % reviews.length);
+    setProgress(0);
   };
 
   const prevReview = () => {
     setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setProgress(0);
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-900/20 to-pink-900/20 relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900/20 to-indigo-900/20 relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.3),transparent_60%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.3),transparent_60%)]"></div>
-      
-      {/* Floating elements */}
-      <div className="absolute top-20 left-20 text-9xl font-bold text-white/5 select-none">GG</div>
-      <div className="absolute bottom-20 right-20 text-9xl font-bold text-white/5 select-none">99</div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.3),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.3),transparent_60%)]"></div>
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-20 animate-slide-up">
+        <div className="text-center mb-20">
           <h2 className="text-6xl font-bold mb-8 text-white">
-            Client <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Reviews</span>
+            Client <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Reviews</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto relative">
-          {/* Navigation dots */}
-          <div className="flex justify-center mb-8 gap-3">
-            {reviews.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentReview(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentReview 
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 w-8' 
-                    : 'bg-gray-600 hover:bg-gray-500'
-                }`}
-              />
-            ))}
-          </div>
-
+        <div className="max-w-4xl mx-auto relative">
           {/* Review Card */}
           <div className="relative">
-            <Card className="bg-gradient-to-br from-slate-800/95 to-purple-900/20 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden">
+            <Card className="bg-gradient-to-br from-slate-800/95 to-blue-900/20 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden">
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/5 to-blue-500/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-indigo-500/5 to-slate-500/10"></div>
               
               <CardContent className="p-12 text-center relative z-10">
                 {/* Large quotation marks */}
-                <div className="text-8xl text-purple-500/20 font-serif leading-none mb-8">"</div>
+                <div className="text-8xl text-blue-500/20 font-serif leading-none mb-8">"</div>
                 
                 {/* Rating */}
                 <div className="flex justify-center items-center gap-2 mb-8">
                   {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                    <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400 animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
+                    <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
                 
@@ -124,17 +119,17 @@ const ClientReviews = () => {
                 {/* Author */}
                 <div className="flex items-center justify-center gap-6">
                   <div className="relative">
-                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-75 animate-pulse"></div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-75"></div>
                     <img 
                       src={reviews[currentReview].avatar} 
                       alt={reviews[currentReview].name}
-                      className="relative w-20 h-20 rounded-full object-cover border-4 border-purple-500/50 transition-transform duration-500 hover:scale-110"
+                      className="relative w-20 h-20 rounded-full object-cover border-4 border-blue-500/50 transition-transform duration-500 hover:scale-110"
                     />
                   </div>
                   <div className="text-left">
                     <div className="font-bold text-white text-xl mb-1">{reviews[currentReview].name}</div>
                     <div className="text-gray-300 text-base">{reviews[currentReview].position}</div>
-                    <div className="text-sm font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
+                    <div className="text-sm font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
                   </div>
                 </div>
               </CardContent>
@@ -143,17 +138,43 @@ const ClientReviews = () => {
             {/* Navigation arrows */}
             <button
               onClick={prevReview}
-              className="absolute left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 group"
+              className="absolute left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
             >
               <span className="text-2xl group-hover:-translate-x-1 transition-transform duration-300">‹</span>
             </button>
             
             <button
               onClick={nextReview}
-              className="absolute right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110 group"
+              className="absolute right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
             >
               <span className="text-2xl group-hover:translate-x-1 transition-transform duration-300">›</span>
             </button>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="mt-8 w-full bg-slate-700/50 rounded-full h-1">
+            <div 
+              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-1 rounded-full transition-all duration-100 ease-linear"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex justify-center mt-6 gap-3">
+            {reviews.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentReview(index);
+                  setProgress(0);
+                }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentReview 
+                    ? 'bg-gradient-to-r from-blue-500 to-indigo-500 w-8' 
+                    : 'bg-gray-600 hover:bg-gray-500'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
