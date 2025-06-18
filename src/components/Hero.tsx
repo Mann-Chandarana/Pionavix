@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ThreeEmoji from "./ThreeEmoji";
 import Typed from 'typed.js';
 
 const Hero = () => {
@@ -27,7 +26,6 @@ const Hero = () => {
 
   return (
     <section className="relative bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 min-h-screen flex items-center overflow-hidden">
-      <ThreeEmoji />
       
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
