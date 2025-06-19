@@ -79,22 +79,37 @@ const ClientReviews = () => {
   };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50"></div>
+    <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-black/30 to-blue-900/20"></div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-bold mb-8 text-gray-900">
-            Client <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Reviews</span>
+          <h2 className="text-6xl font-bold mb-8 text-white">
+            Client <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Reviews</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto relative">
-          <div className="relative">
-            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl">
+          {/* Navigation buttons positioned on the sides */}
+          <button
+            onClick={prevReview}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group border border-blue-500/30"
+          >
+            <ChevronLeft className="h-8 w-8 group-hover:-translate-x-1 transition-transform duration-300" />
+          </button>
+          
+          <button
+            onClick={nextReview}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group border border-blue-500/30"
+          >
+            <ChevronRight className="h-8 w-8 group-hover:translate-x-1 transition-transform duration-300" />
+          </button>
+
+          <div className="relative px-20">
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl border border-gray-700/50">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-600/5 to-gray-500/10"></div>
               
               <CardContent className="p-16 text-center relative z-10">
@@ -110,7 +125,7 @@ const ClientReviews = () => {
                       className={`transition-all duration-500 rounded-full ${
                         index === currentReview 
                           ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-indigo-500' 
-                          : 'w-3 h-3 bg-gray-400 hover:bg-gray-300'
+                          : 'w-3 h-3 bg-gray-500 hover:bg-gray-400'
                       }`}
                     />
                   ))}
@@ -144,32 +159,17 @@ const ClientReviews = () => {
                     <div className="text-base font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
                   </div>
                 </div>
-
-                {/* Progress Bar inside card */}
-                <div className="w-full bg-gray-700/50 rounded-full h-2 mb-8">
+              </CardContent>
+              
+              {/* Progress Bar at the bottom of card, full width */}
+              <div className="relative">
+                <div className="w-full bg-gray-700/50 h-2">
                   <div 
-                    className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full transition-all duration-100 ease-linear"
+                    className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 transition-all duration-100 ease-linear"
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>
-
-                {/* Navigation buttons inside card */}
-                <div className="flex justify-center gap-4">
-                  <button
-                    onClick={prevReview}
-                    className="w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
-                  >
-                    <ChevronLeft className="h-7 w-7 group-hover:-translate-x-1 transition-transform duration-300" />
-                  </button>
-                  
-                  <button
-                    onClick={nextReview}
-                    className="w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
-                  >
-                    <ChevronRight className="h-7 w-7 group-hover:translate-x-1 transition-transform duration-300" />
-                  </button>
-                </div>
-              </CardContent>
+              </div>
             </Card>
           </div>
         </div>

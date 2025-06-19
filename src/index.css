@@ -54,6 +54,15 @@
   }
 }
 
+@keyframes oscillate-y {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -158,6 +167,10 @@
 /* Animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-oscillate-y {
+  animation: oscillate-y 4s ease-in-out infinite;
 }
 
 .animate-slide-up {
