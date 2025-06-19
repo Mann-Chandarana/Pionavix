@@ -24,9 +24,9 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100">
       {/* Header with back button */}
-      <div className="bg-white/5 backdrop-blur-xl border-b border-white/10 py-6">
+      <div className="bg-gray-900/95 backdrop-blur-xl border-b border-gray-700/50 py-6">
         <div className="container mx-auto px-4">
           <Button
             onClick={() => navigate('/')}
@@ -49,16 +49,16 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
               alt={project.title}
               className="w-full h-96 lg:h-[500px] object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
           </div>
 
           {/* Project Info */}
           <div className="flex flex-col justify-center space-y-8">
             <div>
-              <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-6">
+              <h1 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 to-blue-700 bg-clip-text text-transparent mb-6">
                 {project.title}
               </h1>
-              <p className="text-xl text-gray-300 leading-relaxed mb-8">
+              <p className="text-xl text-gray-700 leading-relaxed mb-8">
                 {project.detailedDescription}
               </p>
             </div>
@@ -69,7 +69,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                 <ExternalLink className="h-5 w-5 mr-2" />
                 View Live Demo
               </Button>
-              <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800 px-8 py-3 text-lg">
+              <Button variant="outline" className="border-gray-400 text-gray-700 hover:bg-gray-100 px-8 py-3 text-lg">
                 <Github className="h-5 w-5 mr-2" />
                 View Source Code
               </Button>
@@ -80,7 +80,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
         {/* Project Details Grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {/* Project Meta */}
-          <Card className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+          <Card className="bg-gray-900 border border-gray-700 rounded-2xl">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-6 text-white">Project Details</h3>
               
@@ -113,14 +113,14 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           </Card>
 
           {/* Technologies */}
-          <Card className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+          <Card className="bg-white border border-gray-200 rounded-2xl shadow-lg">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold mb-6 text-white">Technologies Used</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-900">Technologies Used</h3>
               <div className="flex flex-wrap gap-3">
                 {project.technologies.map((tech, index) => (
                   <span 
                     key={index} 
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 text-blue-300 rounded-xl text-sm border border-blue-600/30 font-medium"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 rounded-xl text-sm border border-blue-200 font-medium"
                   >
                     {tech}
                   </span>
@@ -130,7 +130,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           </Card>
 
           {/* Services */}
-          <Card className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+          <Card className="bg-gray-900 border border-gray-700 rounded-2xl">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-6 text-white">Services Provided</h3>
               <div className="space-y-3">
@@ -146,14 +146,14 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
         </div>
 
         {/* Key Features */}
-        <Card className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl">
+        <Card className="bg-white border border-gray-200 rounded-2xl shadow-lg">
           <CardContent className="p-12">
-            <h3 className="text-3xl font-bold mb-10 text-white text-center">Key Features & Achievements</h3>
+            <h3 className="text-3xl font-bold mb-10 text-gray-900 text-center">Key Features & Achievements</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {project.features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 rounded-xl bg-gradient-to-br from-blue-600/10 to-indigo-600/10 border border-blue-600/20">
+                <div key={index} className="flex items-start gap-4 p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200">
                   <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-gray-300 leading-relaxed">{feature}</span>
+                  <span className="text-gray-700 leading-relaxed">{feature}</span>
                 </div>
               ))}
             </div>
