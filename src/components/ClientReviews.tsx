@@ -1,6 +1,6 @@
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect } from "react";
 
@@ -80,8 +80,7 @@ const ClientReviews = () => {
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50"></div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-20">
@@ -94,11 +93,9 @@ const ClientReviews = () => {
         </div>
 
         <div className="max-w-6xl mx-auto relative">
-          {/* Main review card */}
           <div className="relative">
-            <Card className="bg-gradient-to-br from-slate-800 to-slate-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl">
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-600/5 to-slate-500/10"></div>
+            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-600/5 to-gray-500/10"></div>
               
               <CardContent className="p-16 text-center relative z-10">
                 {/* Progress dots */}
@@ -132,7 +129,7 @@ const ClientReviews = () => {
                 </blockquote>
                 
                 {/* Author */}
-                <div className="flex items-center justify-center gap-8">
+                <div className="flex items-center justify-center gap-8 mb-8">
                   <div className="relative">
                     <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur opacity-75"></div>
                     <img 
@@ -147,31 +144,33 @@ const ClientReviews = () => {
                     <div className="text-base font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
                   </div>
                 </div>
+
+                {/* Progress Bar inside card */}
+                <div className="w-full bg-gray-700/50 rounded-full h-2 mb-8">
+                  <div 
+                    className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full transition-all duration-100 ease-linear"
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+
+                {/* Navigation buttons inside card */}
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={prevReview}
+                    className="w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+                  >
+                    <ChevronLeft className="h-7 w-7 group-hover:-translate-x-1 transition-transform duration-300" />
+                  </button>
+                  
+                  <button
+                    onClick={nextReview}
+                    className="w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group"
+                  >
+                    <ChevronRight className="h-7 w-7 group-hover:translate-x-1 transition-transform duration-300" />
+                  </button>
+                </div>
               </CardContent>
             </Card>
-
-            {/* Navigation arrows - positioned outside content area */}
-            <button
-              onClick={prevReview}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group z-10"
-            >
-              <span className="text-2xl group-hover:-translate-x-1 transition-transform duration-300">‹</span>
-            </button>
-            
-            <button
-              onClick={nextReview}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110 group z-10"
-            >
-              <span className="text-2xl group-hover:translate-x-1 transition-transform duration-300">›</span>
-            </button>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="mt-12 w-full bg-gray-200 rounded-full h-2 max-w-md mx-auto">
-            <div 
-              className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full transition-all duration-100 ease-linear"
-              style={{ width: `${progress}%` }}
-            ></div>
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.3),transparent_60%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.3),transparent_60%)]"></div>
@@ -53,7 +53,7 @@ const Hero = () => {
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                <span ref={typedRef} className="bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent"></span>
+                <span ref={typedRef} className="bg-gradient-to-r from-white via-blue-200 to-indigo-200 bg-clip-text text-transparent"></span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl">
