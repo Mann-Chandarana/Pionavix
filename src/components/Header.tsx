@@ -1,13 +1,13 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,30 +33,30 @@ const Header = () => {
         : 'bg-white/98 backdrop-blur-xl border-b border-gray-200/50 shadow-xl py-3'
     }`}>
       <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-12' : 'h-14'}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-10' : 'h-12'}`}>
           <div className="flex items-center">
             <div className="relative group cursor-pointer">
-              {/* New attractive logo */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-700 group-hover:blur-xl"></div>
+              {/* New improved logo */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-700"></div>
               
-              <div className="relative flex items-center space-x-2 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 px-4 py-2 rounded-2xl border border-blue-300/30 shadow-xl group-hover:shadow-blue-500/30 transition-all duration-700 backdrop-blur-sm">
+              <div className="relative flex items-center space-x-2 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-3 py-2 rounded-2xl border border-blue-400/30 shadow-xl group-hover:shadow-blue-500/30 transition-all duration-700 backdrop-blur-sm">
                 {/* Logo icon */}
                 <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 rounded-xl blur opacity-70 group-hover:opacity-90 transition duration-500"></div>
-                  <div className={`relative ${scrolled ? 'w-7 h-7' : 'w-8 h-8'} bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 rounded-xl flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-700 shadow-lg`}>
-                    <span className={`text-white font-bold ${scrolled ? 'text-sm' : 'text-base'}`}>P</span>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-white/20 via-blue-200/30 to-white/20 rounded-xl blur opacity-70 group-hover:opacity-90 transition duration-500"></div>
+                  <div className={`relative ${scrolled ? 'w-6 h-6' : 'w-7 h-7'} bg-gradient-to-br from-white via-blue-100 to-blue-200 rounded-xl flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-700 shadow-lg`}>
+                    <span className={`text-blue-800 font-bold ${scrolled ? 'text-xs' : 'text-sm'}`}>P</span>
                     <div className="absolute inset-0 bg-white/20 rounded-xl"></div>
                   </div>
                 </div>
                 
                 {/* Company name */}
-                <div className={`transition-all duration-500 ${scrolled ? 'text-lg' : 'text-xl'} font-bold`}>
-                  <span className="text-white group-hover:text-blue-200 transition-all duration-700">
+                <div className={`transition-all duration-500 ${scrolled ? 'text-base' : 'text-lg'} font-bold`}>
+                  <span className="text-white group-hover:text-blue-100 transition-all duration-700">
                     ionavix
                   </span>
                 </div>
                 
-                <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full shadow-lg"></div>
+                <div className="w-1 h-1 bg-gradient-to-r from-white/60 to-blue-200/60 rounded-full shadow-lg"></div>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-gray-800 hover:text-blue-600 transition-all duration-300 font-semibold relative group"
+                className="text-gray-700 hover:text-blue-600 transition-all duration-300 font-semibold relative group"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full transition-all duration-300"></span>
@@ -76,16 +76,7 @@ const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-3">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
-              className="border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 font-semibold shadow-lg text-xs px-3 py-1"
-            >
-              <Globe className="h-3 w-3 mr-1" />
-              {language.toUpperCase()}
-            </Button>
-            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-semibold px-4 py-1 text-xs">
+            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-semibold px-4 py-1 text-xs text-white">
               {t('getStarted')}
             </Button>
           </div>
@@ -95,16 +86,8 @@ const Header = () => {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
-              className="border-blue-200 shadow-lg p-2"
-            >
-              <Globe className="h-3 w-3" />
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="border-blue-200 shadow-lg p-2"
+              className="border-gray-300 shadow-lg p-2 text-gray-700 hover:text-blue-600"
             >
               {isMenuOpen ? <X className="h-3 w-3" /> : <Menu className="h-3 w-3" />}
             </Button>
@@ -119,14 +102,14 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-800 hover:text-blue-600 transition-colors font-semibold py-1"
+                  className="text-gray-700 hover:text-blue-600 transition-colors font-semibold py-1"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-3">
-                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold shadow-xl text-xs">
+                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold shadow-xl text-xs text-white">
                   {t('getStarted')}
                 </Button>
               </div>
