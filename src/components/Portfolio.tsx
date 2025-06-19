@@ -65,8 +65,8 @@ const Portfolio = () => {
                   <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white shadow-lg">
                     <ExternalLink className="h-4 w-4" />
                   </Button>
-                  <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white shadow-lg">
-                    <Github className="h-4 w-4" />
+                  <Button size="sm" className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg">
+                    <Github className="h-4 w-4 text-white" />
                   </Button>
                 </div>
               </div>
@@ -89,12 +89,12 @@ const Portfolio = () => {
 
                 <div className="flex gap-3">
                   <Link to={`/project/${project.id}`} className="flex-1">
-                    <Button size="sm" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <Button size="sm" className="w-full bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                       <ExternalLink className="h-4 w-4 mr-2" />
                       View Details
                     </Button>
                   </Link>
-                  <Button size="sm" variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50 shadow-lg">
+                  <Button size="sm" className="bg-gray-900 hover:bg-gray-800 text-white shadow-lg">
                     <Github className="h-4 w-4" />
                   </Button>
                 </div>

@@ -79,15 +79,15 @@ const ClientReviews = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-black/30 to-blue-900/20"></div>
+    <section className="py-24 bg-gradient-to-br from-white via-gray-50 to-blue-50 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white/50 to-gray-50/30"></div>
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-20">
-          <h2 className="text-6xl font-bold mb-8 text-white">
-            Client <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">Reviews</span>
+          <h2 className="text-6xl font-bold mb-8 text-gray-900">
+            Client <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Reviews</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
@@ -109,8 +109,8 @@ const ClientReviews = () => {
           </button>
 
           <div className="relative px-20">
-            <Card className="bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-xl border-0 shadow-2xl relative overflow-hidden rounded-3xl border border-gray-700/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-indigo-600/5 to-gray-500/10"></div>
+            <Card className="bg-white backdrop-blur-xl border border-gray-200 shadow-2xl relative overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white/50 to-gray-50/30"></div>
               
               <CardContent className="p-16 text-center relative z-10">
                 {/* Progress dots */}
@@ -125,7 +125,7 @@ const ClientReviews = () => {
                       className={`transition-all duration-500 rounded-full ${
                         index === currentReview 
                           ? 'w-12 h-3 bg-gradient-to-r from-blue-500 to-indigo-500' 
-                          : 'w-3 h-3 bg-gray-500 hover:bg-gray-400'
+                          : 'w-3 h-3 bg-gray-400 hover:bg-gray-500'
                       }`}
                     />
                   ))}
@@ -139,7 +139,7 @@ const ClientReviews = () => {
                 </div>
                 
                 {/* Review text */}
-                <blockquote className="text-white text-3xl leading-relaxed mb-16 font-light italic max-w-5xl mx-auto transition-all duration-500">
+                <blockquote className="text-gray-900 text-3xl leading-relaxed mb-16 font-light italic max-w-5xl mx-auto transition-all duration-500">
                   "{reviews[currentReview].review}"
                 </blockquote>
                 
@@ -154,16 +154,16 @@ const ClientReviews = () => {
                     />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-white text-2xl mb-2">{reviews[currentReview].name}</div>
-                    <div className="text-gray-300 text-lg">{reviews[currentReview].position}</div>
-                    <div className="text-base font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
+                    <div className="font-bold text-gray-900 text-2xl mb-2">{reviews[currentReview].name}</div>
+                    <div className="text-gray-600 text-lg">{reviews[currentReview].position}</div>
+                    <div className="text-base font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{reviews[currentReview].company}</div>
                   </div>
                 </div>
               </CardContent>
               
               {/* Progress Bar at the bottom of card, full width */}
               <div className="relative">
-                <div className="w-full bg-gray-700/50 h-2">
+                <div className="w-full bg-gray-200 h-2">
                   <div 
                     className="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 transition-all duration-100 ease-linear"
                     style={{ width: `${progress}%` }}
