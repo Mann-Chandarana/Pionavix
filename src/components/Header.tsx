@@ -37,8 +37,20 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-12' : 'h-16'}`}>
           <div className="flex items-center">
-            <div className={`transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent`}>
-              Pionavix
+            <div className={`flex items-center space-x-2 transition-all duration-300 ${isScrolled ? 'scale-75' : 'scale-100'}`}>
+              {/* New Pionavix Logo */}
+              <div className="relative">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-lg flex items-center justify-center shadow-lg">
+                  <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
+                    <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full"></div>
+                  </div>
+                </div>
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
+              </div>
+              <div className={`transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold`}>
+                <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>Piona</span>
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">vix</span>
+              </div>
             </div>
           </div>
 
