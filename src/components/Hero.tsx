@@ -1,8 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useRef } from "react";
-import Typed from "react-typed";
+import { useEffect, useRef, useState } from "react";
 
 interface HeroProps {
   isDark: boolean;
@@ -10,6 +9,17 @@ interface HeroProps {
 
 const Hero = ({ isDark }: HeroProps) => {
   const imageRef = useRef<HTMLDivElement>(null);
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [textIndex, setTextIndex] = useState(0);
+
+  const texts = [
+    "Digital Future",
+    "Business Growth",
+    "User Experience",
+    "Innovation Journey"
+  ];
 
   useEffect(() => {
     const image = imageRef.current;
@@ -24,6 +34,29 @@ const Hero = ({ isDark }: HeroProps) => {
     const animationId = setInterval(animate, 16);
     return () => clearInterval(animationId);
   }, []);
+
+  useEffect(() => {
+    const currentText = texts[textIndex];
+    const typingSpeed = isDeleting ? 50 : 80;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && currentIndex < currentText.length) {
+        setDisplayedText(currentText.slice(0, currentIndex + 1));
+        setCurrentIndex(currentIndex + 1);
+      } else if (isDeleting && currentIndex > 0) {
+        setDisplayedText(currentText.slice(0, currentIndex - 1));
+        setCurrentIndex(currentIndex - 1);
+      } else if (!isDeleting && currentIndex === currentText.length) {
+        setTimeout(() => setIsDeleting(true), pauseTime);
+      } else if (isDeleting && currentIndex === 0) {
+        setIsDeleting(false);
+        setTextIndex((textIndex + 1) % texts.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [currentIndex, isDeleting, textIndex, texts]);
 
   return (
     <section className={`relative min-h-screen flex items-center ${
@@ -47,18 +80,8 @@ const Hero = ({ isDark }: HeroProps) => {
                 Transform Your
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                  <Typed
-                    strings={[
-                      "Digital Future",
-                      "Business Growth",
-                      "User Experience",
-                      "Innovation Journey"
-                    ]}
-                    typeSpeed={80}
-                    backSpeed={50}
-                    backDelay={2000}
-                    loop
-                  />
+                  {displayedText}
+                  <span className="typed-cursor">|</span>
                 </span>
               </h1>
               <p className={`text-xl leading-relaxed max-w-xl ${
