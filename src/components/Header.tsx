@@ -1,12 +1,15 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -76,7 +79,18 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <div className="flex items-center space-x-2">
+              <Sun className="h-4 w-4 text-yellow-400" />
+              <Switch
+                checked={theme === 'dark'}
+                onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+                className="data-[state=checked]:bg-blue-600"
+              />
+              <Moon className="h-4 w-4 text-blue-400" />
+            </div>
+            
             <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-semibold px-4 py-1 text-xs text-white border border-blue-500/30">
               {t('getStarted')}
             </Button>
@@ -109,6 +123,21 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
+              
+              {/* Mobile Theme Toggle */}
+              <div className="flex items-center justify-between py-2">
+                <span className="text-gray-300 font-semibold">Theme</span>
+                <div className="flex items-center space-x-2">
+                  <Sun className="h-4 w-4 text-yellow-400" />
+                  <Switch
+                    checked={theme === 'dark'}
+                    onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+                    className="data-[state=checked]:bg-blue-600"
+                  />
+                  <Moon className="h-4 w-4 text-blue-400" />
+                </div>
+              </div>
+              
               <div className="flex flex-col space-y-2 pt-3">
                 <Button size="sm" className="bg-gradient-to-r from-blue-600 to-indigo-600 font-semibold shadow-xl text-xs text-white">
                   {t('getStarted')}

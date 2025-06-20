@@ -26,6 +26,28 @@
     --ring: 59 130 246;
     --radius: 0.5rem;
   }
+
+  .dark {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
+    --primary: 59 130 246;
+    --primary-foreground: 248 250 252;
+    --secondary: 51 65 85;
+    --secondary-foreground: 248 250 252;
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
+    --accent: 51 65 85;
+    --accent-foreground: 248 250 252;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 59 130 246;
+  }
 }
 
 @layer base {
@@ -34,12 +56,24 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
-    color: #1e293b;
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   }
+
+  /* Light theme background */
+  body:not(.dark) {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
+    color: #1e293b;
+  }
+
+  /* Dark theme background */
+  body.dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+    color: #f8fafc;
+  }
 }
+
+/* ... keep existing code (all keyframes animations) the same ... */
 
 /* Enhanced animations with better performance */
 @keyframes float {
@@ -164,6 +198,15 @@
   }
 }
 
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Animation classes */
 .animate-float {
   animation: float 6s ease-in-out infinite;
@@ -210,6 +253,10 @@
   animation: fade-in-scale 0.6s ease-out;
 }
 
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
 /* Enhanced hover effects */
 .hover-lift {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -236,6 +283,11 @@
   box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
 }
 
+/* Dark theme hover effects */
+.dark .hover-glow:hover {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4), 0 0 60px rgba(34, 211, 238, 0.2);
+}
+
 /* Enhanced card effects */
 .card-hover {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -246,6 +298,10 @@
   box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
+.dark .card-hover:hover {
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3), 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
 /* Glass morphism effects */
 .glass-effect {
   background: rgba(255, 255, 255, 0.1);
@@ -254,7 +310,13 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-/* Enhanced scrollbar */
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced scrollbar for dark theme */
 ::-webkit-scrollbar {
   width: 12px;
 }
@@ -264,6 +326,10 @@
   border-radius: 10px;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+}
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #60a5fa 0%, #6366f1 50%, #3b82f6 100%);
   border-radius: 10px;
@@ -271,18 +337,33 @@
   transition: all 0.3s ease;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #6366f1 100%);
+  border: 2px solid #1e293b;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #1d4ed8 100%);
   box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 }
 
-/* Enhanced selection */
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #4f46e5 100%);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+}
+
+/* Enhanced selection for dark theme */
 ::selection {
   background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
   color: white;
 }
 
-/* Improved focus states */
+.dark ::selection {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
+  color: white;
+}
+
+/* Improved focus states for dark theme */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -292,20 +373,27 @@ textarea:focus-visible {
   border-radius: 8px;
 }
 
-/* Typography improvements */
+.dark button:focus-visible,
+.dark a:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible {
+  outline: 2px solid #22d3ee;
+}
+
+/* Typography improvements for dark theme */
 h1, h2, h3, h4, h5, h6 {
-  color: #1e293b;
   font-weight: 700;
   letter-spacing: -0.025em;
+  transition: color 0.3s ease;
 }
 
 p {
-  color: #475569;
   line-height: 1.7;
   font-weight: 400;
+  transition: color 0.3s ease;
 }
 
-/* Section separators */
+/* Section separators for dark theme */
 .section-separator {
   position: relative;
 }
@@ -318,9 +406,14 @@ p {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  transition: background 0.3s ease;
 }
 
-/* Enhanced button styles */
+.dark .section-separator::before {
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent);
+}
+
+/* Enhanced button styles for dark theme */
 .btn-gradient {
   background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #1e40af 100%);
   color: white;
@@ -333,6 +426,90 @@ p {
   background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #1d4ed8 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
+
+.dark .btn-gradient {
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #1e40af 100%);
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
+}
+
+.dark .btn-gradient:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #1d4ed8 100%);
+  box-shadow: 0 8px 25px rgba(34, 211, 238, 0.5);
+}
+
+/* Enhanced backgrounds for sections with dark theme support */
+.section-bg-light {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
+  transition: background 0.3s ease;
+}
+
+.dark .section-bg-light {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+.section-bg-mixed {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
+  transition: background 0.3s ease;
+}
+
+.dark .section-bg-mixed {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 25%, #334155 50%, #0f172a 75%, #1e293b 100%);
+}
+
+.section-bg-dark {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
+  transition: background 0.3s ease;
+}
+
+.dark .section-bg-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+}
+
+.section-bg-contrast {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 20%, #1e293b 40%, #334155 60%, #f8fafc 80%, #ffffff 100%);
+  transition: background 0.3s ease;
+}
+
+.dark .section-bg-contrast {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #ffffff 40%, #f8fafc 60%, #1e293b 80%, #0f172a 100%);
+}
+
+/* Box shadows for elevation with dark theme support */
+.shadow-soft {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-soft {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-strong {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-strong {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 8px 20px -6px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-glow {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-glow {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.shadow-dark {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), 0 8px 20px -6px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .shadow-dark {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 8px 20px -6px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive design improvements */
@@ -357,38 +534,4 @@ p {
 img {
   max-width: 100%;
   height: auto;
-}
-
-/* Enhanced backgrounds for sections */
-.section-bg-light {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
-}
-
-.section-bg-mixed {
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
-}
-
-.section-bg-dark {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
-}
-
-.section-bg-contrast {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 20%, #1e293b 40%, #334155 60%, #f8fafc 80%, #ffffff 100%);
-}
-
-/* Box shadows for elevation */
-.shadow-soft {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-}
-
-.shadow-strong {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.1);
-}
-
-.shadow-glow {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-.shadow-dark {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), 0 8px 20px -6px rgba(0, 0, 0, 0.2);
 }
