@@ -1,33 +1,9 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 255 255 255;
-    --foreground: 15 23 42;
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
-    --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
-    --primary: 15 23 42;
-    --primary-foreground: 248 250 252;
-    --secondary: 241 245 249;
-    --secondary-foreground: 15 23 42;
-    --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
-    --accent: 241 245 249;
-    --accent-foreground: 15 23 42;
-    --destructive: 239 68 68;
-    --destructive-foreground: 248 250 252;
-    --border: 226 232 240;
-    --input: 226 232 240;
-    --ring: 59 130 246;
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 15 23 42;
     --foreground: 248 250 252;
     --card: 30 41 59;
@@ -47,6 +23,7 @@
     --border: 51 65 85;
     --input: 51 65 85;
     --ring: 59 130 246;
+    --radius: 0.5rem;
   }
 }
 
@@ -58,16 +35,6 @@
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  }
-
-  /* Light theme background */
-  body:not(.dark) {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
-    color: #1e293b;
-  }
-
-  /* Dark theme background */
-  body.dark {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
     color: #f8fafc;
   }
@@ -264,7 +231,7 @@
 
 .hover-lift:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(34, 211, 238, 0.4);
 }
 
 .hover-scale {
@@ -280,11 +247,6 @@
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(99, 102, 241, 0.2);
-}
-
-/* Dark theme hover effects */
-.dark .hover-glow:hover {
   box-shadow: 0 0 30px rgba(34, 211, 238, 0.4), 0 0 60px rgba(34, 211, 238, 0.2);
 }
 
@@ -295,92 +257,56 @@
 
 .card-hover:hover {
   transform: translateY(-8px) rotateY(2deg) rotateX(2deg);
-  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 20px rgba(59, 130, 246, 0.3);
-}
-
-.dark .card-hover:hover {
   box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3), 0 0 20px rgba(34, 211, 238, 0.4);
 }
 
 /* Glass morphism effects */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-.dark .glass-effect {
   background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Enhanced scrollbar for dark theme */
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
   width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-  border-radius: 10px;
-}
-
-.dark ::-webkit-scrollbar-track {
   background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #60a5fa 0%, #6366f1 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #6366f1 100%);
   border-radius: 10px;
-  border: 2px solid #f1f5f9;
+  border: 2px solid #1e293b;
   transition: all 0.3s ease;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #6366f1 100%);
-  border: 2px solid #1e293b;
-}
-
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #1d4ed8 100%);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #4f46e5 100%);
   box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
 }
 
-/* Enhanced selection for dark theme */
+/* Enhanced selection */
 ::selection {
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-  color: white;
-}
-
-.dark ::selection {
   background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%);
   color: white;
 }
 
-/* Improved focus states for dark theme */
+/* Improved focus states */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #22d3ee;
   outline-offset: 2px;
   border-radius: 8px;
 }
 
-.dark button:focus-visible,
-.dark a:focus-visible,
-.dark input:focus-visible,
-.dark textarea:focus-visible {
-  outline: 2px solid #22d3ee;
-}
-
-/* Typography improvements for dark theme */
+/* Typography improvements */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -393,7 +319,7 @@ p {
   transition: color 0.3s ease;
 }
 
-/* Section separators for dark theme */
+/* Section separators */
 .section-separator {
   position: relative;
 }
@@ -405,111 +331,65 @@ p {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent);
   transition: background 0.3s ease;
 }
 
-.dark .section-separator::before {
-  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.3), transparent);
-}
-
-/* Enhanced button styles for dark theme */
+/* Enhanced button styles */
 .btn-gradient {
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #1e40af 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #1e40af 100%);
   color: white;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #1d4ed8 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
-}
-
-.dark .btn-gradient {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #1e40af 100%);
   box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
 }
 
-.dark .btn-gradient:hover {
+.btn-gradient:hover {
   background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #1d4ed8 100%);
+  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(34, 211, 238, 0.5);
 }
 
-/* Enhanced backgrounds for sections with dark theme support */
+/* Enhanced backgrounds for sections */
 .section-bg-light {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
-  transition: background 0.3s ease;
-}
-
-.dark .section-bg-light {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  transition: background 0.3s ease;
 }
 
 .section-bg-mixed {
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 25%, #f1f5f9 50%, #ffffff 75%, #f8fafc 100%);
-  transition: background 0.3s ease;
-}
-
-.dark .section-bg-mixed {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 25%, #334155 50%, #0f172a 75%, #1e293b 100%);
+  transition: background 0.3s ease;
 }
 
 .section-bg-dark {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
-  transition: background 0.3s ease;
-}
-
-.dark .section-bg-dark {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+  transition: background 0.3s ease;
 }
 
 .section-bg-contrast {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 20%, #1e293b 40%, #334155 60%, #f8fafc 80%, #ffffff 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #334155 40%, #475569 60%, #1e293b 80%, #0f172a 100%);
   transition: background 0.3s ease;
 }
 
-.dark .section-bg-contrast {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 20%, #ffffff 40%, #f8fafc 60%, #1e293b 80%, #0f172a 100%);
-}
-
-/* Box shadows for elevation with dark theme support */
+/* Box shadows for elevation */
 .shadow-soft {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
-}
-
-.dark .shadow-soft {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
 .shadow-strong {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 20px -6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.dark .shadow-strong {
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 8px 20px -6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
 }
 
 .shadow-glow {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), 0 10px 40px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.dark .shadow-glow {
   box-shadow: 0 0 30px rgba(34, 211, 238, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
 }
 
 .shadow-dark {
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3), 0 8px 20px -6px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
-}
-
-.dark .shadow-dark {
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 8px 20px -6px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
 }
 
 /* Responsive design improvements */
