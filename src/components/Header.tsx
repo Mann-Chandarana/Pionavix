@@ -37,32 +37,32 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 py-2' : 'h-20 py-4'}`}>
           <div className="flex items-center">
-            <div className={`flex items-center space-x-4 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'} group`}>
-              {/* Enhanced Pionavix Logo */}
+            <div className={`flex items-center space-x-4 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'} group cursor-pointer`}>
+              {/* Enhanced Pionavix Logo with hover effects */}
               <div className="relative">
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${isScrolled ? 'w-10 h-10' : 'w-12 h-12'}`}>
+                <div className={`${isScrolled ? 'w-10 h-10' : 'w-12 h-12'} rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl`}>
                   <div className="relative">
-                    <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12">
-                      <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-purple-700 rounded-md"></div>
+                    <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
+                      <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-purple-700 rounded-md transition-all duration-300 group-hover:scale-125"></div>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse group-hover:scale-150 transition-all duration-300"></div>
                   </div>
                 </div>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 opacity-20 blur-lg group-hover:opacity-40 transition-all duration-300"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 opacity-20 blur-lg group-hover:opacity-60 group-hover:blur-xl transition-all duration-500"></div>
               </div>
               
               <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative h-12 flex flex-col justify-center`}>
-                {/* Main Text - moves up and scales down on hover */}
-                <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-90">
-                  <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-colors duration-300`}>Piona</span>
-                  <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                {/* Main Text - enhanced hover effects */}
+                <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-95">
+                  <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-all duration-300 group-hover:text-blue-500`}>Piona</span>
+                  <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:via-pink-500 group-hover:to-blue-500 transition-all duration-500">
                     vix
                   </span>
                 </div>
                 
-                {/* Tagline - appears below on hover */}
-                <div className="absolute top-8 left-0 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-y-1">
-                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium whitespace-nowrap`}>
+                {/* Tagline - enhanced animation */}
+                <div className="absolute top-8 left-0 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-2">
+                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium whitespace-nowrap group-hover:text-purple-500 transition-all duration-300`}>
                     Innovation • Excellence
                   </div>
                 </div>

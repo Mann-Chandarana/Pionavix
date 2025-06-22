@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 interface ClientReviewsProps {
@@ -92,11 +92,15 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="bg-[#2a2f4a]/80 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden">
-            {/* Quotation marks */}
-            <div className="absolute top-6 left-6 text-6xl text-blue-400/30 font-serif z-10">"</div>
-            <div className="absolute bottom-6 right-6 text-6xl text-purple-400/30 font-serif z-10 rotate-180">"</div>
+            {/* Quote icons */}
+            <div className="absolute top-6 left-6 z-10">
+              <Quote className="w-12 h-12 text-blue-400/40" />
+            </div>
+            <div className="absolute bottom-6 right-6 z-10">
+              <Quote className="w-12 h-12 text-purple-400/40 rotate-180" />
+            </div>
 
-            <div className="p-8 md:p-12 pt-16 pb-20">
+            <div className="p-8 md:p-12 pt-20 pb-20">
               {/* Carousel indicators */}
               <div className="flex justify-center mb-8 space-x-3">
                 {reviews.map((_, index) => (
@@ -162,17 +166,17 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
               </div>
             </div>
 
-            {/* Navigation arrows - fully outside the card */}
+            {/* Navigation arrows - positioned to overlap card edge */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl border-2 border-white/20 z-20"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-xl border-2 border-white/20 z-20"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
