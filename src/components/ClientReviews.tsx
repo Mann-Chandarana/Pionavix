@@ -78,6 +78,12 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
     return () => clearInterval(timer);
   }, [currentSlide]);
 
+  const ExclamationIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L12 14M12 18L12 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  );
+
   return (
     <section className="py-20 bg-[#1a1f3a] relative overflow-hidden">
       {/* Background decorative elements */}
@@ -95,64 +101,74 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
         </div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="bg-[#2a2f4a]/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-gray-700/30 relative overflow-hidden">
-            {/* Carousel indicators */}
-            <div className="flex justify-center mb-8 space-x-2">
-              {reviews.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    setCurrentSlide(index);
-                    setProgress(0);
-                  }}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                      ? 'bg-blue-500' 
-                      : 'bg-gray-600'
-                  }`}
-                />
-              ))}
+          <div className="bg-[#2a2f4a]/80 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden">
+            {/* Exclamation mark icons */}
+            <div className="absolute top-4 left-4 text-blue-400/60 z-10">
+              <ExclamationIcon />
+            </div>
+            <div className="absolute bottom-4 right-4 text-purple-400/60 z-10">
+              <ExclamationIcon />
             </div>
 
-            {/* Star rating */}
-            <div className="flex justify-center mb-8">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1" />
-              ))}
-            </div>
-
-            {/* Review text */}
-            <div className="text-center mb-12">
-              <p className="text-2xl md:text-3xl leading-relaxed italic text-white font-light">
-                "{reviews[currentSlide].review}"
-              </p>
-            </div>
-
-            {/* Client info */}
-            <div className="flex items-center justify-center space-x-6">
-              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-500">
-                <img 
-                  src={reviews[currentSlide].avatar} 
-                  alt={reviews[currentSlide].name}
-                  className="w-full h-full object-cover"
-                />
+            <div className="p-8 md:p-12">
+              {/* Carousel indicators */}
+              <div className="flex justify-center mb-8 space-x-2">
+                {reviews.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      setProgress(0);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentSlide 
+                        ? 'bg-blue-500' 
+                        : 'bg-gray-600'
+                    }`}
+                  />
+                ))}
               </div>
-              <div className="text-left">
-                <h4 className="text-2xl font-bold text-white mb-1">
-                  {reviews[currentSlide].name}
-                </h4>
-                <p className="text-gray-300 text-lg">
-                  {reviews[currentSlide].position}
-                </p>
-                <p className="text-blue-400 font-medium">
-                  {reviews[currentSlide].company}
+
+              {/* Star rating */}
+              <div className="flex justify-center mb-8">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1" />
+                ))}
+              </div>
+
+              {/* Review text */}
+              <div className="text-center mb-12">
+                <p className="text-2xl md:text-3xl leading-relaxed italic text-white font-light">
+                  "{reviews[currentSlide].review}"
                 </p>
               </div>
+
+              {/* Client info */}
+              <div className="flex items-center justify-center space-x-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-500">
+                  <img 
+                    src={reviews[currentSlide].avatar} 
+                    alt={reviews[currentSlide].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="text-left">
+                  <h4 className="text-2xl font-bold text-white mb-1">
+                    {reviews[currentSlide].name}
+                  </h4>
+                  <p className="text-gray-300 text-lg">
+                    {reviews[currentSlide].position}
+                  </p>
+                  <p className="text-blue-400 font-medium">
+                    {reviews[currentSlide].company}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Progress bar */}
-            <div className="mt-12">
-              <div className="w-full bg-gray-700 rounded-full h-1 overflow-hidden">
+            {/* Progress bar at the bottom edge */}
+            <div className="absolute bottom-0 left-0 right-0">
+              <div className="w-full bg-gray-700 h-1">
                 <div 
                   className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-100 ease-linear"
                   style={{ width: `${progress}%` }}
@@ -160,17 +176,17 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
               </div>
             </div>
 
-            {/* Navigation arrows */}
+            {/* Navigation arrows - vertically centered to card edges */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
