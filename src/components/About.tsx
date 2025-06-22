@@ -64,11 +64,11 @@ const About = ({ isDark }: AboutProps) => {
   ];
 
   return (
-    <section className="py-20 bg-[#1a1f3a]">
+    <section className="py-20 bg-[#1a1f3a] transition-all duration-1000">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
-            About <span className="text-purple-400">Pionavix</span>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white transition-all duration-700 hover:scale-105">
+            About <span className="text-purple-400 transition-colors duration-500 hover:text-purple-300">Pionavix</span>
           </h2>
         </div>
 
@@ -76,10 +76,10 @@ const About = ({ isDark }: AboutProps) => {
           {/* Left side - Description and Technology Stack */}
           <div className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="mb-12">
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+              <p className="text-lg text-gray-300 leading-relaxed mb-8 transition-all duration-500 hover:text-gray-200">
                 We are a team of passionate developers, designers, and strategists dedicated to creating exceptional digital experiences. Our mission is to transform your ideas into powerful, scalable solutions that drive business growth.
               </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-300 leading-relaxed transition-all duration-500 hover:text-gray-200">
                 With a focus on innovation and excellence, we combine technical expertise with creative vision to deliver results that exceed expectations. Every project is an opportunity to push boundaries and create something extraordinary.
               </p>
             </div>
@@ -89,15 +89,15 @@ const About = ({ isDark }: AboutProps) => {
               {Object.entries(techStacks).map(([key, stack], index) => (
                 <Card 
                   key={key}
-                  className={`bg-[#2a2f4a]/80 border-gray-700/50 backdrop-blur-lg hover:border-purple-500/50 transition-all duration-500 hover:scale-105 ${
+                  className={`bg-[#2a2f4a]/80 border-gray-700/50 backdrop-blur-lg hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 transform ${
                     inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
-                      <span className="text-2xl mr-3">{stack.icon}</span>
-                      <h4 className="text-lg font-semibold text-white">
+                      <span className="text-2xl mr-3 transition-transform duration-300 hover:scale-110">{stack.icon}</span>
+                      <h4 className="text-lg font-semibold text-white transition-colors duration-300 hover:text-purple-300">
                         {stack.title}
                       </h4>
                     </div>
@@ -105,7 +105,7 @@ const About = ({ isDark }: AboutProps) => {
                       {stack.technologies.map((tech, techIndex) => (
                         <span 
                           key={techIndex}
-                          className="px-3 py-1 text-sm bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30"
+                          className="px-3 py-1 text-sm bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/30 transition-all duration-300 hover:bg-blue-500/30 hover:scale-105 hover:shadow-lg cursor-pointer"
                         >
                           {tech}
                         </span>
@@ -123,19 +123,19 @@ const About = ({ isDark }: AboutProps) => {
               {values.map((value, index) => (
                 <Card 
                   key={index}
-                  className={`bg-[#2a2f4a]/80 border-gray-700/50 backdrop-blur-lg hover:border-purple-500/50 transition-all duration-300 hover:scale-105 ${
+                  className={`bg-[#2a2f4a]/80 border-gray-700/50 backdrop-blur-lg hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20 transform ${
                     inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
                   <CardContent className="p-6 text-center">
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center mx-auto mb-4`}>
-                      <value.icon className="w-8 h-8 text-white" />
+                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:scale-110 hover:shadow-lg`}>
+                      <value.icon className="w-8 h-8 text-white transition-transform duration-300 hover:rotate-12" />
                     </div>
-                    <h4 className="text-lg font-semibold mb-3 text-white">
+                    <h4 className="text-lg font-semibold mb-3 text-white transition-colors duration-300 hover:text-purple-300">
                       {value.title}
                     </h4>
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-gray-300 text-sm transition-colors duration-300 hover:text-gray-200">
                       {value.description}
                     </p>
                   </CardContent>
