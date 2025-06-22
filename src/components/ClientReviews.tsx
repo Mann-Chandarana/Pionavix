@@ -42,7 +42,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
       company: "HealthTech Solutions",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "The team at Pionavix transformed our vision into reality. Their technical expertise and attention to detail is unmatched in the industry."
+      review: "Pionavix delivered a robust healthcare platform that meets all our compliance requirements. Their expertise in the healthcare domain is impressive."
     },
     {
       id: 4,
@@ -97,19 +97,19 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-12">
-          <div className={`w-3/4 mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className="relative max-w-6xl mx-auto px-20">
+          <div className={`w-full mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* Quote icons */}
-            <div className="absolute top-6 left-6 z-10">
-              <Quote className="w-12 h-12 text-blue-400/60 transition-all duration-300 hover:text-blue-400/80 hover:scale-110" />
+            <div className="absolute top-8 left-8 z-10">
+              <Quote className="w-16 h-16 text-blue-400/40 transition-all duration-300" />
             </div>
-            <div className="absolute bottom-6 right-6 z-10">
-              <Quote className="w-12 h-12 text-purple-400/60 rotate-180 transition-all duration-300 hover:text-purple-400/80 hover:scale-110" />
+            <div className="absolute bottom-8 right-8 z-10">
+              <Quote className="w-16 h-16 text-purple-400/40 rotate-180 transition-all duration-300" />
             </div>
 
-            <div className="p-8 md:p-10 pt-16 pb-16">
+            <div className="p-12 pt-20 pb-20">
               {/* Carousel indicators */}
-              <div className="flex justify-center mb-8 space-x-3">
+              <div className="flex justify-center mb-10 space-x-3">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
@@ -119,34 +119,34 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                     }}
                     className={`transition-all duration-500 rounded-full hover:scale-125 ${
                       index === currentSlide 
-                        ? 'w-8 h-3 bg-blue-500 shadow-lg shadow-blue-500/50' 
-                        : 'w-3 h-3 bg-gray-600 hover:bg-gray-500'
+                        ? 'w-10 h-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg shadow-blue-500/50' 
+                        : 'w-4 h-4 bg-gray-600 hover:bg-gray-500'
                     }`}
                   />
                 ))}
               </div>
 
               {/* Star rating */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-10">
                 {[...Array(5)].map((_, i) => (
                   <Star 
                     key={i} 
-                    className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1 transition-all duration-300 hover:scale-110 animate-pulse" 
+                    className="w-8 h-8 fill-yellow-400 text-yellow-400 mx-1 transition-all duration-300 hover:scale-110 animate-pulse" 
                     style={{ animationDelay: `${i * 100}ms` }}
                   />
                 ))}
               </div>
 
               {/* Review text */}
-              <div className="text-center mb-10">
-                <p className="text-xl md:text-2xl leading-relaxed italic text-white font-light transition-all duration-500 hover:text-gray-100">
+              <div className="text-center mb-12">
+                <p className="text-2xl md:text-3xl leading-relaxed italic text-white font-light transition-all duration-500 hover:text-gray-100 max-w-4xl mx-auto">
                   "{reviews[currentSlide].review}"
                 </p>
               </div>
 
               {/* Client info */}
-              <div className="flex items-center justify-center space-x-6">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-500 transition-all duration-300 hover:border-purple-500 hover:scale-110">
+              <div className="flex items-center justify-center space-x-8">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 transition-all duration-300 hover:border-purple-500 hover:scale-110">
                   <img 
                     src={reviews[currentSlide].avatar} 
                     alt={reviews[currentSlide].name}
@@ -154,10 +154,10 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                   />
                 </div>
                 <div className="text-left">
-                  <h4 className="text-2xl font-bold text-white mb-1 transition-colors duration-300 hover:text-purple-300">
+                  <h4 className="text-2xl font-bold text-white mb-2 transition-colors duration-300 hover:text-purple-300">
                     {reviews[currentSlide].name}
                   </h4>
-                  <p className="text-gray-300 text-lg transition-colors duration-300 hover:text-gray-200">
+                  <p className="text-gray-300 text-lg mb-1 transition-colors duration-300 hover:text-gray-200">
                     {reviews[currentSlide].position}
                   </p>
                   <p className="text-blue-400 font-medium transition-colors duration-300 hover:text-blue-300">
@@ -178,19 +178,19 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             </div>
           </div>
 
-          {/* Navigation arrows - positioned to be fully visible with overlap */}
+          {/* Navigation arrows - styled like the reference image */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/20 z-30 hover:shadow-blue-500/50"
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/10 z-30 hover:shadow-blue-500/50"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/20 z-30 hover:shadow-blue-500/50"
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/10 z-30 hover:shadow-blue-500/50"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-8 h-8" />
           </button>
         </div>
       </div>
