@@ -37,9 +37,9 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
       <div className="container mx-auto px-4">
         <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 py-2' : 'h-20 py-4'}`}>
           <div className="flex items-center">
-            <div className={`flex items-center space-x-3 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
-              {/* Enhanced Pionavix Logo */}
-              <div className="relative group">
+            <div className={`flex items-center space-x-3 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'} group`}>
+              {/* Enhanced Pionavix Logo with Hover Animation */}
+              <div className="relative">
                 <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${isScrolled ? 'w-10 h-10' : 'w-12 h-12'}`}>
                   <div className="relative">
                     <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12">
@@ -51,12 +51,21 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 opacity-20 blur-lg group-hover:opacity-40 transition-all duration-300"></div>
               </div>
               
-              <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight`}>
-                <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-colors duration-300`}>Piona</span>
-                <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent relative">
-                  vix
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></div>
-                </span>
+              <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative overflow-hidden`}>
+                {/* Main Text */}
+                <div className="transition-all duration-300 group-hover:-translate-y-8">
+                  <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-colors duration-300`}>Piona</span>
+                  <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                    vix
+                  </span>
+                </div>
+                
+                {/* Hover Text */}
+                <div className="absolute top-8 left-0 transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:-translate-y-8">
+                  <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium`}>
+                    Innovation • Excellence
+                  </div>
+                </div>
               </div>
             </div>
           </div>

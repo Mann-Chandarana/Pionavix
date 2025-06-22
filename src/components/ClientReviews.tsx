@@ -19,12 +19,12 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
   const reviews = [
     {
       id: 1,
-      name: "David Thompson",
-      position: "VP of Engineering",
-      company: "HealthTech Solutions",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      name: "Michael Chen",
+      position: "CTO",
+      company: "Innovation Labs",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Pionavix delivered a robust healthcare platform that meets all our compliance requirements. Their expertise in the healthcare domain is impressive."
+      review: "Working with Pionavix was a game-changer for our digital transformation. They provided cutting-edge solutions with remarkable attention to detail."
     },
     {
       id: 2,
@@ -33,14 +33,14 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
       company: "TechCorp Inc.",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b69c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Working with Pionavix was exceptional. They delivered beyond our expectations and provided ongoing support that truly made a difference."
+      review: "Exceptional service and outstanding results. Pionavix helped us achieve remarkable growth through their innovative solutions and expertise."
     },
     {
       id: 3,
-      name: "Michael Chen",
-      position: "Founder",
-      company: "InnovateX",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      name: "David Thompson",
+      position: "VP of Engineering",
+      company: "HealthTech Solutions",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
       review: "The team at Pionavix transformed our vision into reality. Their technical expertise and attention to detail is unmatched in the industry."
     },
@@ -51,7 +51,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
       company: "StartupHub",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Exceptional service and outstanding results. Pionavix helped us achieve remarkable growth through their innovative solutions."
+      review: "Outstanding partnership with Pionavix. They delivered beyond our expectations and provided ongoing support that truly made a difference."
     }
   ];
 
@@ -72,14 +72,14 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
           nextSlide();
           return 0;
         }
-        return prev + 2;
+        return prev + 1;
       });
-    }, 100);
+    }, 50);
     return () => clearInterval(timer);
   }, [currentSlide]);
 
   return (
-    <section className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-[#1a1f3a]'}`}>
+    <section className="py-20 bg-[#1a1f3a] relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 text-8xl font-bold opacity-10 text-blue-500">"</div>
       <div className="absolute bottom-10 right-10 text-8xl font-bold opacity-10 text-purple-500">"</div>
@@ -87,15 +87,15 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
-            Client <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Reviews</span>
+            Client <span className="text-purple-400">Reviews</span>
           </h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-300">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-gray-700/50 relative overflow-hidden">
+        <div className="relative max-w-4xl mx-auto">
+          <div className="bg-[#2a2f4a]/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-gray-700/30 relative overflow-hidden">
             {/* Carousel indicators */}
             <div className="flex justify-center mb-8 space-x-2">
               {reviews.map((_, index) => (
@@ -107,7 +107,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                   }}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
+                      ? 'bg-blue-500' 
                       : 'bg-gray-600'
                   }`}
                 />
@@ -163,14 +163,14 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             {/* Navigation arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600/20 hover:bg-blue-600/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-blue-500/30"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600/20 hover:bg-blue-600/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-blue-500/30"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
