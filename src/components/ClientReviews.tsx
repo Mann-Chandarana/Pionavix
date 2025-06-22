@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { useInView } from "react-intersection-observer";
@@ -79,7 +78,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
   }, [currentSlide]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#0f172a] to-[#1e293b] relative overflow-hidden transition-all duration-1000">
+    <section className="py-20 bg-gradient-to-br from-[#0a0f1c] to-[#1a1f3a] relative overflow-hidden transition-all duration-1000">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
@@ -98,7 +97,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
         </div>
 
         <div className="relative max-w-6xl mx-auto px-20">
-          <div className={`w-full mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className={`w-[85%] mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* Quote icons */}
             <div className="absolute top-8 left-8 z-10">
               <Quote className="w-16 h-16 text-blue-400/40 transition-all duration-300" />
@@ -178,19 +177,21 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             </div>
           </div>
 
-          {/* Navigation arrows - styled like the reference image */}
+          {/* Navigation arrows - vertically centered to the card */}
           <button
             onClick={prevSlide}
-            className="absolute left-6 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/10 z-30 hover:shadow-blue-500/50"
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            style={{ left: 'calc(7.5% - 24px)' }}
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-6 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl border-2 border-white/10 z-30 hover:shadow-blue-500/50"
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            style={{ right: 'calc(7.5% - 24px)' }}
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </div>
       </div>
