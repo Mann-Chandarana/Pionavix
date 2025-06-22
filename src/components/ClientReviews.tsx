@@ -96,7 +96,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
           </p>
         </div>
 
-        <div className="relative max-w-6xl mx-auto px-20">
+        <div className="relative max-w-6xl mx-auto">
           <div className={`w-[85%] mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* Quote icons */}
             <div className="absolute top-8 left-8 z-10">
@@ -177,19 +177,19 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             </div>
           </div>
 
-          {/* Navigation arrows - vertically centered to the card */}
+          {/* Navigation arrows - positioned at the center of the card's left and right borders */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
-            style={{ left: 'calc(7.5% - 24px)' }}
+            className="absolute top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            style={{ left: '7.5%' }}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
-            style={{ right: 'calc(7.5% - 24px)' }}
+            className="absolute top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            style={{ right: '7.5%' }}
           >
             <ChevronRight className="w-6 h-6" />
           </button>
