@@ -78,18 +78,8 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
     return () => clearInterval(timer);
   }, [currentSlide]);
 
-  const ExclamationIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L12 14M12 18L12 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  );
-
   return (
     <section className="py-20 bg-[#1a1f3a] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-10 left-10 text-8xl font-bold opacity-10 text-blue-500">"</div>
-      <div className="absolute bottom-10 right-10 text-8xl font-bold opacity-10 text-purple-500">"</div>
-      
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
@@ -102,17 +92,13 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
 
         <div className="relative max-w-4xl mx-auto">
           <div className="bg-[#2a2f4a]/80 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden">
-            {/* Exclamation mark icons */}
-            <div className="absolute top-4 left-4 text-blue-400/60 z-10">
-              <ExclamationIcon />
-            </div>
-            <div className="absolute bottom-4 right-4 text-purple-400/60 z-10">
-              <ExclamationIcon />
-            </div>
+            {/* Quotation marks */}
+            <div className="absolute top-6 left-6 text-6xl text-blue-400/30 font-serif z-10">"</div>
+            <div className="absolute bottom-6 right-6 text-6xl text-purple-400/30 font-serif z-10 rotate-180">"</div>
 
-            <div className="p-8 md:p-12">
+            <div className="p-8 md:p-12 pt-16 pb-20">
               {/* Carousel indicators */}
-              <div className="flex justify-center mb-8 space-x-2">
+              <div className="flex justify-center mb-8 space-x-3">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
@@ -120,10 +106,10 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                       setCurrentSlide(index);
                       setProgress(0);
                     }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`transition-all duration-300 rounded-full ${
                       index === currentSlide 
-                        ? 'bg-blue-500' 
-                        : 'bg-gray-600'
+                        ? 'w-8 h-3 bg-blue-500' 
+                        : 'w-3 h-3 bg-gray-600'
                     }`}
                   />
                 ))}
@@ -139,7 +125,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
               {/* Review text */}
               <div className="text-center mb-12">
                 <p className="text-2xl md:text-3xl leading-relaxed italic text-white font-light">
-                  "{reviews[currentSlide].review}"
+                  {reviews[currentSlide].review}
                 </p>
               </div>
 
@@ -176,17 +162,17 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
               </div>
             </div>
 
-            {/* Navigation arrows - vertically centered to card edges */}
+            {/* Navigation arrows - fully outside the card */}
             <button
               onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border-2 border-white/20"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
