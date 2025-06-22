@@ -19,27 +19,36 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
     {
       id: 1,
       title: "E-Commerce Platform",
-      description: "Modern e-commerce solution with advanced features",
+      description: "Modern e-commerce solution with advanced features and seamless user experience",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
-      tags: ["React", "Node.js", "MongoDB"],
+      tags: ["React", "Node.js", "MongoDB", "Stripe"],
       github: "#",
       live: "#"
     },
     {
       id: 2,
       title: "Healthcare Management",
-      description: "Comprehensive healthcare management system",
+      description: "Comprehensive healthcare management system with patient tracking and analytics",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
-      tags: ["Vue.js", "Python", "PostgreSQL"],
+      tags: ["Vue.js", "Python", "PostgreSQL", "Docker"],
       github: "#",
       live: "#"
     },
     {
       id: 3,
       title: "Financial Dashboard",
-      description: "Real-time financial analytics dashboard",
+      description: "Real-time financial analytics dashboard with advanced reporting capabilities",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
-      tags: ["Angular", "Express", "MySQL"],
+      tags: ["Angular", "Express", "MySQL", "D3.js"],
+      github: "#",
+      live: "#"
+    },
+    {
+      id: 4,
+      title: "Social Media App",
+      description: "Modern social media platform with real-time messaging and content sharing",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2340&q=80",
+      tags: ["React Native", "Firebase", "Redux", "Socket.io"],
       github: "#",
       live: "#"
     }
@@ -57,8 +66,8 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {projects.slice(0, 4).map((project, index) => (
             <Card 
               key={project.id}
               className={`group overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
@@ -70,7 +79,7 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4 flex gap-2">
@@ -84,7 +93,7 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
                 </div>
               </div>
               <CardContent className="p-6">
-                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   {project.title}
                 </h3>
                 <p className={`mb-4 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>

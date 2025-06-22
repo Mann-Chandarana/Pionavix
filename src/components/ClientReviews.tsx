@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 interface ClientReviewsProps {
@@ -14,137 +14,163 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
   });
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const reviews = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      position: "CEO",
-      company: "TechCorp Inc.",
-      avatar: "SJ",
+      name: "David Thompson",
+      position: "VP of Engineering",
+      company: "HealthTech Solutions",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Pionavix delivered an exceptional solution that exceeded our expectations. Their team was professional, responsive, and truly understood our business needs."
+      review: "Pionavix delivered a robust healthcare platform that meets all our compliance requirements. Their expertise in the healthcare domain is impressive."
     },
     {
       id: 2,
-      name: "Michael Chen",
-      position: "Founder",
-      company: "InnovateX",
-      avatar: "MC",
+      name: "Sarah Johnson",
+      position: "CEO",
+      company: "TechCorp Inc.",
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b69c?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Working with Pionavix was a game-changer for our business. They delivered a stunning website that perfectly captures our brand essence and drives results."
+      review: "Working with Pionavix was exceptional. They delivered beyond our expectations and provided ongoing support that truly made a difference."
     },
     {
       id: 3,
-      name: "Emily Rodriguez",
-      position: "Marketing Director",
-      company: "StartupHub",
-      avatar: "ER",
+      name: "Michael Chen",
+      position: "Founder",
+      company: "InnovateX",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "The team at Pionavix is incredibly talented and professional. They took our vision and turned it into a reality that surpassed our dreams."
+      review: "The team at Pionavix transformed our vision into reality. Their technical expertise and attention to detail is unmatched in the industry."
     },
     {
       id: 4,
-      name: "David Thompson",
-      position: "CTO",
-      company: "DigitalFlow",
-      avatar: "DT",
+      name: "Emily Rodriguez",
+      position: "Marketing Director",
+      company: "StartupHub",
+      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
       rating: 5,
-      review: "Exceptional service and outstanding results. Pionavix helped us transform our digital presence and achieve remarkable growth."
+      review: "Exceptional service and outstanding results. Pionavix helped us achieve remarkable growth through their innovative solutions."
     }
   ];
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % reviews.length);
+    setProgress(0);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setProgress(0);
   };
 
   useEffect(() => {
     const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
+      setProgress((prev) => {
+        if (prev >= 100) {
+          nextSlide();
+          return 0;
+        }
+        return prev + 2;
+      });
+    }, 100);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide]);
 
   return (
-    <section className={`py-20 ${isDark ? 'bg-gray-800' : 'bg-white'} relative overflow-hidden`}>
+    <section className={`py-20 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-[#1a1f3a]'}`}>
+      {/* Background decorative elements */}
+      <div className="absolute top-10 left-10 text-8xl font-bold opacity-10 text-blue-500">"</div>
+      <div className="absolute bottom-10 right-10 text-8xl font-bold opacity-10 text-purple-500">"</div>
+      
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
             Client <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Reviews</span>
           </h2>
-          <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+          <p className="text-xl max-w-3xl mx-auto text-gray-300">
             See what our clients say about working with us and the results we've delivered.
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Large quotation marks */}
-          <Quote className={`absolute -top-4 -left-4 w-16 h-16 ${isDark ? 'text-gray-700' : 'text-gray-200'} opacity-50`} />
-          <Quote className={`absolute -bottom-4 -right-4 w-16 h-16 ${isDark ? 'text-gray-700' : 'text-gray-200'} opacity-50 rotate-180`} />
-          
-          <div className={`${isDark ? 'bg-gray-900' : 'bg-gray-50'} rounded-3xl p-8 md:p-12 shadow-2xl relative`}>
+        <div className="relative max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-gray-700/50 relative overflow-hidden">
             {/* Carousel indicators */}
             <div className="flex justify-center mb-8 space-x-2">
               {reviews.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => {
+                    setCurrentSlide(index);
+                    setProgress(0);
+                  }}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlide 
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
-                      : isDark ? 'bg-gray-600' : 'bg-gray-300'
+                      : 'bg-gray-600'
                   }`}
                 />
               ))}
             </div>
 
             {/* Star rating */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-8">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1" />
               ))}
             </div>
 
             {/* Review text */}
-            <div className="text-center mb-8">
-              <p className={`text-xl md:text-2xl leading-relaxed italic ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+            <div className="text-center mb-12">
+              <p className="text-2xl md:text-3xl leading-relaxed italic text-white font-light">
                 "{reviews[currentSlide].review}"
               </p>
             </div>
 
             {/* Client info */}
-            <div className="flex items-center justify-center space-x-4">
-              <div className={`w-16 h-16 rounded-full ${isDark ? 'bg-blue-600' : 'bg-blue-500'} flex items-center justify-center text-white font-bold text-lg border-4 ${isDark ? 'border-blue-400' : 'border-blue-300'}`}>
-                {reviews[currentSlide].avatar}
+            <div className="flex items-center justify-center space-x-6">
+              <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-blue-500">
+                <img 
+                  src={reviews[currentSlide].avatar} 
+                  alt={reviews[currentSlide].name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-center">
-                <h4 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <div className="text-left">
+                <h4 className="text-2xl font-bold text-white mb-1">
                   {reviews[currentSlide].name}
                 </h4>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                <p className="text-gray-300 text-lg">
                   {reviews[currentSlide].position}
                 </p>
-                <p className={`text-sm font-medium ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                <p className="text-blue-400 font-medium">
                   {reviews[currentSlide].company}
                 </p>
+              </div>
+            </div>
+
+            {/* Progress bar */}
+            <div className="mt-12">
+              <div className="w-full bg-gray-700 rounded-full h-1 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-100 ease-linear"
+                  style={{ width: `${progress}%` }}
+                />
               </div>
             </div>
 
             {/* Navigation arrows */}
             <button
               onClick={prevSlide}
-              className={`absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full ${isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'} text-white flex items-center justify-center transition-all duration-300 hover:scale-110`}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600/20 hover:bg-blue-600/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-blue-500/30"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             
             <button
               onClick={nextSlide}
-              className={`absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full ${isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'} text-white flex items-center justify-center transition-all duration-300 hover:scale-110`}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-blue-600/20 hover:bg-blue-600/40 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-blue-500/30"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

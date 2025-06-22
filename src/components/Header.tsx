@@ -29,27 +29,34 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? `${isDark ? 'bg-gray-900/95' : 'bg-white/95'} backdrop-blur-md border-b ${isDark ? 'border-gray-800' : 'border-gray-200'} ${isScrolled ? 'py-2' : 'py-4'}` 
-        : `${isDark ? 'bg-transparent' : 'bg-transparent'} py-4`
+        ? `${isDark ? 'bg-gray-900/95' : 'bg-white/95'} backdrop-blur-xl border-b ${isDark ? 'border-gray-800' : 'border-gray-200'} shadow-lg` 
+        : `${isDark ? 'bg-transparent' : 'bg-transparent'}`
     }`}>
       <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-12' : 'h-16'}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? 'h-16 py-2' : 'h-20 py-4'}`}>
           <div className="flex items-center">
-            <div className={`flex items-center space-x-2 transition-all duration-300 ${isScrolled ? 'scale-75' : 'scale-100'}`}>
-              {/* New Pionavix Logo */}
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-lg flex items-center justify-center shadow-lg">
-                  <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
-                    <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full"></div>
+            <div className={`flex items-center space-x-3 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+              {/* Enhanced Pionavix Logo */}
+              <div className="relative group">
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${isScrolled ? 'w-10 h-10' : 'w-12 h-12'}`}>
+                  <div className="relative">
+                    <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12">
+                      <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-purple-700 rounded-md"></div>
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 opacity-20 blur-lg group-hover:opacity-40 transition-all duration-300"></div>
               </div>
-              <div className={`transition-all duration-300 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold`}>
-                <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>Piona</span>
-                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">vix</span>
+              
+              <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight`}>
+                <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-colors duration-300`}>Piona</span>
+                <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent relative">
+                  vix
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></div>
+                </span>
               </div>
             </div>
           </div>
@@ -60,10 +67,10 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors font-medium relative group`}
+                className={`${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} transition-all duration-300 font-medium relative group py-2`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
@@ -73,12 +80,23 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className={`${isDark ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'}`}
+              className={`relative overflow-hidden transition-all duration-300 hover:scale-105 ${
+                isDark 
+                  ? 'border-gray-700 text-gray-300 hover:bg-gray-800 hover:border-gray-600' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-100 hover:border-gray-400'
+              }`}
             >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              <div className="relative z-10">
+                {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </div>
             </Button>
-            <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
-              Get Started
+            
+            <Button 
+              size="sm" 
+              className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span className="relative z-10">Get Started</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </Button>
           </div>
 
@@ -88,7 +106,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               variant="outline"
               size="sm"
               onClick={toggleTheme}
-              className={`${isDark ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-gray-700'}`}
+              className={`${isDark ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-gray-700'} transition-all duration-300`}
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
@@ -96,7 +114,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               variant="outline"
               size="sm"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`${isDark ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-gray-700'}`}
+              className={`${isDark ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-gray-700'} transition-all duration-300`}
             >
               {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </Button>
@@ -105,13 +123,13 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className={`md:hidden py-4 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+          <div className={`md:hidden py-4 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'} backdrop-blur-xl`}>
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className={`${isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'} transition-colors font-medium`}
+                  className={`${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} transition-colors font-medium py-2`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
