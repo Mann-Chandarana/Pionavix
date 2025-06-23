@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -61,16 +60,16 @@ const Hero = ({ isDark }: HeroProps) => {
   return (
     <section className={`relative min-h-screen flex items-center transition-all duration-1000 ${
       isDark 
-        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
-        : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
+        ? 'bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800' 
+        : 'bg-gradient-to-br from-gray-800 via-gray-900 to-slate-800'
     }`}>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-3/4 left-1/3 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/4 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-cyan-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-3/4 left-1/3 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -78,13 +77,11 @@ const Hero = ({ isDark }: HeroProps) => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <div className={`inline-flex items-center px-4 py-2 rounded-full ${
-                isDark ? 'bg-blue-900/50 text-blue-300' : 'bg-blue-100 text-blue-800'
+                isDark ? 'bg-blue-900/30 text-blue-300' : 'bg-blue-900/20 text-blue-200'
               } text-sm font-medium backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-lg`}>
                 🚀 Digital Innovation Experts
               </div>
-              <h1 className={`text-5xl lg:text-6xl font-bold leading-tight transition-all duration-700 hover:scale-105 ${
-                isDark ? 'text-white' : 'text-gray-900'
-              }`}>
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight transition-all duration-700 hover:scale-105 text-white">
                 Transform Your
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-500 bg-clip-text text-transparent transition-all duration-500 hover:from-blue-300 hover:via-cyan-400 hover:to-indigo-400">
@@ -92,9 +89,7 @@ const Hero = ({ isDark }: HeroProps) => {
                   <span className="typed-cursor">|</span>
                 </span>
               </h1>
-              <p className={`text-xl leading-relaxed max-w-xl transition-all duration-500 hover:scale-[1.02] ${
-                isDark ? 'text-gray-300 hover:text-gray-200' : 'text-gray-600 hover:text-gray-700'
-              }`}>
+              <p className="text-xl leading-relaxed max-w-xl transition-all duration-500 hover:scale-[1.02] text-gray-300 hover:text-gray-200">
                 We craft cutting-edge digital solutions that drive growth, enhance user experience, and transform businesses across industries.
               </p>
             </div>
@@ -108,16 +103,16 @@ const Hero = ({ isDark }: HeroProps) => {
 
             <div className="flex items-center gap-8 pt-8">
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>500+</div>
-                <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Projects Delivered</div>
+                <div className="text-3xl font-bold transition-colors duration-300 text-white hover:text-blue-300">500+</div>
+                <div className="text-sm text-gray-400">Projects Delivered</div>
               </div>
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>98%</div>
-                <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Client Satisfaction</div>
+                <div className="text-3xl font-bold transition-colors duration-300 text-white hover:text-blue-300">98%</div>
+                <div className="text-sm text-gray-400">Client Satisfaction</div>
               </div>
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>5+</div>
-                <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Years Experience</div>
+                <div className="text-3xl font-bold transition-colors duration-300 text-white hover:text-blue-300">5+</div>
+                <div className="text-sm text-gray-400">Years Experience</div>
               </div>
             </div>
           </div>
