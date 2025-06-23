@@ -54,7 +54,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative ${isScrolled ? 'h-10' : 'h-12'} flex flex-col justify-center group-hover:${isScrolled ? 'h-10' : 'h-12'}`}>
                 {/* Main Text - enhanced hover effects */}
                 <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-95">
-                  <span className={`transition-all duration-300 ${isDark ? 'text-white' : 'text-gray-800'}`}>Pio</span>
+                  <span className="text-white transition-all duration-300">Pio</span>
                   <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:via-cyan-500 group-hover:to-blue-500 transition-all duration-500">
                     navix
                   </span>
