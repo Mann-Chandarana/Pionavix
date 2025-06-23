@@ -130,8 +130,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                 {[...Array(5)].map((_, i) => (
                   <Star 
                     key={i} 
-                    className="w-8 h-8 fill-yellow-400 text-yellow-400 mx-1 transition-all duration-300 hover:scale-110 animate-pulse" 
-                    style={{ animationDelay: `${i * 100}ms` }}
+                    className="w-8 h-8 fill-yellow-400 text-yellow-400 mx-1 transition-all duration-300 hover:scale-110" 
                   />
                 ))}
               </div>
@@ -177,10 +176,10 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             </div>
           </div>
 
-          {/* Navigation arrows - positioned at the center of the card's left and right borders */}
+          {/* Navigation arrows - positioned half inside and half outside the card borders */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
             style={{ left: '7.5%' }}
           >
             <ChevronLeft className="w-6 h-6" />
@@ -188,7 +187,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
           
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white text-gray-800 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg border border-gray-200 z-30 hover:shadow-xl"
+            className="absolute top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
             style={{ right: '7.5%' }}
           >
             <ChevronRight className="w-6 h-6" />
