@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { useInView } from "react-intersection-observer";
@@ -78,18 +79,18 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
   }, [currentSlide]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#0a0f1c] to-[#1a1f3a] relative overflow-hidden transition-all duration-1000">
+    <section className="py-20 bg-gradient-to-br from-[#0a0f1c] to-[#1a2137] relative overflow-hidden transition-all duration-1000">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-pink-500 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-sky-500 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white transition-all duration-700 hover:scale-105">
-            Client <span className="text-purple-400 transition-colors duration-500 hover:text-purple-300">Reviews</span>
+            Client <span className="text-blue-400 transition-colors duration-500 hover:text-blue-300">Reviews</span>
           </h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-300 transition-all duration-500 hover:text-gray-200">
             See what our clients say about working with us and the results we've delivered.
@@ -97,13 +98,13 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          <div className={`w-[85%] mx-auto bg-[#2a2f4a]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-purple-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className={`w-[85%] mx-auto bg-[#1e2a47]/90 backdrop-blur-lg rounded-2xl border border-gray-700/30 relative overflow-hidden transition-all duration-700 hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-500/50 transform ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             {/* Quote icons */}
             <div className="absolute top-8 left-8 z-10">
               <Quote className="w-16 h-16 text-blue-400/40 transition-all duration-300" />
             </div>
             <div className="absolute bottom-8 right-8 z-10">
-              <Quote className="w-16 h-16 text-purple-400/40 rotate-180 transition-all duration-300" />
+              <Quote className="w-16 h-16 text-blue-400/40 rotate-180 transition-all duration-300" />
             </div>
 
             <div className="p-12 pt-20 pb-20">
@@ -118,7 +119,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                     }}
                     className={`transition-all duration-500 rounded-full hover:scale-125 ${
                       index === currentSlide 
-                        ? 'w-10 h-4 bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg shadow-blue-500/50' 
+                        ? 'w-10 h-4 bg-gradient-to-r from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/50' 
                         : 'w-4 h-4 bg-gray-600 hover:bg-gray-500'
                     }`}
                   />
@@ -144,7 +145,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
 
               {/* Client info */}
               <div className="flex items-center justify-center space-x-8">
-                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 transition-all duration-300 hover:border-purple-500 hover:scale-110">
+                <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-500 transition-all duration-300 hover:border-cyan-500 hover:scale-110">
                   <img 
                     src={reviews[currentSlide].avatar} 
                     alt={reviews[currentSlide].name}
@@ -152,7 +153,7 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
                   />
                 </div>
                 <div className="text-left">
-                  <h4 className="text-2xl font-bold text-white mb-2 transition-colors duration-300 hover:text-purple-300">
+                  <h4 className="text-2xl font-bold text-white mb-2 transition-colors duration-300 hover:text-blue-300">
                     {reviews[currentSlide].name}
                   </h4>
                   <p className="text-gray-300 text-lg mb-1 transition-colors duration-300 hover:text-gray-200">
@@ -169,26 +170,24 @@ const ClientReviews = ({ isDark }: ClientReviewsProps) => {
             <div className="absolute bottom-0 left-0 right-0">
               <div className="w-full bg-gray-700 h-1">
                 <div 
-                  className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-100 ease-linear shadow-lg"
+                  className="h-full bg-gradient-to-r from-blue-500 to-cyan-600 transition-all duration-100 ease-linear shadow-lg"
                   style={{ width: `${progress}%` }}
                 />
               </div>
             </div>
           </div>
 
-          {/* Navigation arrows - positioned half inside and half outside the card borders */}
+          {/* Navigation arrows - positioned at the center of left and right borders */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
-            style={{ left: '7.5%' }}
+            className="absolute top-1/2 left-[7.5%] -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
-            style={{ right: '7.5%' }}
+            className="absolute top-1/2 right-[7.5%] -translate-y-1/2 translate-x-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-30 hover:shadow-xl"
           >
             <ChevronRight className="w-6 h-6" />
           </button>

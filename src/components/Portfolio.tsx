@@ -59,7 +59,7 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className={`text-4xl lg:text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Our <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Portfolio</span>
+            Our <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-500 bg-clip-text text-transparent">Portfolio</span>
           </h2>
           <p className={`text-xl max-w-3xl mx-auto ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Explore our latest projects and see how we've helped businesses transform their digital presence
@@ -112,7 +112,7 @@ const Portfolio = ({ isDark }: PortfolioProps) => {
                   ))}
                 </div>
                 <Link to={`/project/${project.id}`}>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                  <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white">
                     View Details
                   </Button>
                 </Link>

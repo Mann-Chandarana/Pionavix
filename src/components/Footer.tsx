@@ -11,7 +11,7 @@ const Footer = ({ isDark }: FooterProps) => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-500 bg-clip-text text-transparent mb-4">
               Pionavix
             </div>
             <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4`}>

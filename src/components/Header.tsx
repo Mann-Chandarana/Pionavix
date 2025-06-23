@@ -40,29 +40,29 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
             <div className={`flex items-center space-x-4 transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-100'} group cursor-pointer`}>
               {/* Enhanced Pionavix Logo with hover effects */}
               <div className="relative">
-                <div className={`${isScrolled ? 'w-10 h-10' : 'w-12 h-12'} rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl`}>
+                <div className={`${isScrolled ? 'w-10 h-10' : 'w-12 h-12'} rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-500 flex items-center justify-center shadow-xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl`}>
                   <div className="relative">
                     <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12 group-hover:scale-110">
-                      <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-purple-700 rounded-md transition-all duration-300 group-hover:scale-125"></div>
+                      <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-blue-700 rounded-md transition-all duration-300 group-hover:scale-125"></div>
                     </div>
-                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse group-hover:scale-150 transition-all duration-300"></div>
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse group-hover:scale-150 transition-all duration-300"></div>
                   </div>
                 </div>
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 opacity-20 blur-lg group-hover:opacity-60 group-hover:blur-xl transition-all duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-500 opacity-20 blur-lg group-hover:opacity-60 group-hover:blur-xl transition-all duration-500"></div>
               </div>
               
               <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative h-12 flex flex-col justify-center`}>
                 {/* Main Text - enhanced hover effects */}
                 <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-95">
                   <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-all duration-300 group-hover:text-blue-500`}>Piona</span>
-                  <span className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:via-pink-500 group-hover:to-blue-500 transition-all duration-500">
+                  <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:via-cyan-500 group-hover:to-blue-500 transition-all duration-500">
                     vix
                   </span>
                 </div>
                 
                 {/* Tagline - enhanced animation */}
                 <div className="absolute top-8 left-0 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-2">
-                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium whitespace-nowrap group-hover:text-purple-500 transition-all duration-300`}>
+                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium whitespace-nowrap group-hover:text-blue-500 transition-all duration-300`}>
                     Innovation • Excellence
                   </div>
                 </div>
@@ -79,7 +79,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
                 className={`${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} transition-all duration-300 font-medium relative group py-2`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-600 transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
@@ -102,10 +102,10 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
             
             <Button 
               size="sm" 
-              className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <span className="relative z-10">Get Started</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
             </Button>
           </div>
 
@@ -145,7 +145,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                <Button size="sm" className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
                   Get Started
                 </Button>
               </div>

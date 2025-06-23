@@ -26,50 +26,50 @@ const Services = ({ isDark }: ServicesProps) => {
       icon: Globe,
       title: "Web Development",
       description: "Modern, responsive websites and web applications built with cutting-edge technologies and best practices.",
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-500/20",
-      borderColor: "border-purple-500/30"
+      color: "from-cyan-500 to-cyan-600",
+      bgColor: "bg-cyan-500/20",
+      borderColor: "border-cyan-500/30"
     },
     {
       icon: Smartphone,
       title: "App Development",
       description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
-      color: "from-green-500 to-green-600",
-      bgColor: "bg-green-500/20",
-      borderColor: "border-green-500/30"
+      color: "from-sky-500 to-sky-600",
+      bgColor: "bg-sky-500/20",
+      borderColor: "border-sky-500/30"
     },
     {
       icon: Brain,
       title: "AI/ML Solutions",
       description: "Intelligent automation and machine learning solutions to transform your business processes and decision-making.",
-      color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-500/20",
-      borderColor: "border-orange-500/30"
+      color: "from-indigo-500 to-indigo-600",
+      bgColor: "bg-indigo-500/20",
+      borderColor: "border-indigo-500/30"
     },
     {
       icon: Shield,
       title: "QA & Testing",
       description: "Comprehensive quality assurance and testing services to ensure flawless software delivery and performance.",
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-500/20",
-      borderColor: "border-purple-500/30"
+      color: "from-blue-600 to-blue-700",
+      bgColor: "bg-blue-600/20",
+      borderColor: "border-blue-600/30"
     },
     {
       icon: Settings,
       title: "DevOps Solutions",
       description: "Streamlined development and deployment processes for faster and more reliable software delivery pipelines.",
-      color: "from-yellow-500 to-yellow-600",
-      bgColor: "bg-yellow-500/20",
-      borderColor: "border-yellow-500/30"
+      color: "from-cyan-600 to-cyan-700",
+      bgColor: "bg-cyan-600/20",
+      borderColor: "border-cyan-600/30"
     }
   ];
 
   return (
-    <section className="py-20 bg-[#1a1f3a]">
+    <section className="py-20 bg-[#0f1729]">
       <div className="container mx-auto px-4">
         <div ref={ref} className={`text-center mb-16 transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white">
-            Our <span className="text-purple-400">Services</span>
+            Our <span className="text-blue-400">Services</span>
           </h2>
           <p className="text-xl max-w-3xl mx-auto text-gray-300">
             We offer comprehensive digital solutions to transform your business and create exceptional user experiences.
@@ -80,7 +80,7 @@ const Services = ({ isDark }: ServicesProps) => {
           {services.map((service, index) => (
             <Card 
               key={index}
-              className={`group transition-all duration-500 hover:scale-105 hover:shadow-2xl bg-[#2a2f4a]/80 border-gray-700/50 backdrop-blur-lg hover:border-purple-500/50 ${
+              className={`group transition-all duration-500 hover:scale-105 hover:shadow-2xl bg-[#1e2a47]/80 border-gray-700/50 backdrop-blur-lg hover:border-blue-500/50 ${
                 inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
@@ -94,7 +94,7 @@ const Services = ({ isDark }: ServicesProps) => {
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-purple-300 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-blue-300 transition-colors duration-300">
                     {service.title}
                   </h3>
                   
