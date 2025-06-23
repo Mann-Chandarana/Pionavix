@@ -51,18 +51,18 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-500 opacity-20 blur-lg group-hover:opacity-60 group-hover:blur-xl transition-all duration-500"></div>
               </div>
               
-              <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative h-12 flex flex-col justify-center`}>
+              <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative ${isScrolled ? 'h-10' : 'h-12'} flex flex-col justify-center group-hover:${isScrolled ? 'h-10' : 'h-12'}`}>
                 {/* Main Text - enhanced hover effects */}
                 <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-95">
-                  <span className={`${isDark ? 'text-white' : 'text-gray-900'} transition-all duration-300 group-hover:text-blue-500`}>Piona</span>
+                  <span className="text-white transition-all duration-300">Pio</span>
                   <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:via-cyan-500 group-hover:to-blue-500 transition-all duration-500">
-                    vix
+                    navix
                   </span>
                 </div>
                 
                 {/* Tagline - enhanced animation */}
                 <div className="absolute top-8 left-0 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-2">
-                  <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'} font-medium whitespace-nowrap group-hover:text-blue-500 transition-all duration-300`}>
+                  <div className="text-xs text-white font-medium whitespace-nowrap transition-all duration-300">
                     Innovation • Excellence
                   </div>
                 </div>
