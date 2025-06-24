@@ -61,7 +61,7 @@ const Hero = ({ isDark }: HeroProps) => {
   return (
     <section className={`relative min-h-screen flex items-center transition-all duration-1000 ${
       isDark 
-        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
+        ? 'bg-gray-800' 
         : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
     }`}>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -122,7 +122,9 @@ const Hero = ({ isDark }: HeroProps) => {
             </div>
           </div>
 
-          <div className="relative animate-fade-in" ref={imageRef} style={{ animationDelay: '300ms' }}>
+          <div className={`relative animate-fade-in ${
+            isDark ? 'bg-gradient-to-br from-slate-800 via-blue-900 to-indigo-900 rounded-3xl p-8' : ''
+          }`} ref={imageRef} style={{ animationDelay: '300ms' }}>
             <div className="relative z-10 transition-all duration-500 hover:scale-105">
               <img 
                 src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
