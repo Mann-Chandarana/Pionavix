@@ -61,7 +61,7 @@ const Hero = ({ isDark }: HeroProps) => {
   return (
     <section className={`relative min-h-screen flex items-center transition-all duration-1000 ${
       isDark 
-        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-slate-900' 
+        ? 'bg-gradient-to-br from-gray-800 via-gray-700 to-slate-800' 
         : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
     }`}>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -69,13 +69,13 @@ const Hero = ({ isDark }: HeroProps) => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className={`absolute top-1/4 left-10 w-32 h-32 rounded-full blur-3xl animate-pulse ${
-          isDark ? 'bg-blue-500/5' : 'bg-blue-500/10'
+          isDark ? 'bg-blue-500/10' : 'bg-blue-500/10'
         }`}></div>
         <div className={`absolute bottom-1/4 right-10 w-40 h-40 rounded-full blur-3xl animate-pulse delay-1000 ${
-          isDark ? 'bg-cyan-500/5' : 'bg-cyan-500/10'
+          isDark ? 'bg-cyan-500/10' : 'bg-cyan-500/10'
         }`}></div>
         <div className={`absolute top-3/4 left-1/3 w-24 h-24 rounded-full blur-2xl animate-pulse delay-500 ${
-          isDark ? 'bg-indigo-500/5' : 'bg-indigo-500/10'
+          isDark ? 'bg-indigo-500/10' : 'bg-indigo-500/10'
         }`}></div>
       </div>
 
@@ -84,7 +84,7 @@ const Hero = ({ isDark }: HeroProps) => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <div className={`inline-flex items-center px-4 py-2 rounded-full ${
-                isDark ? 'bg-gray-800/70 text-blue-300 border border-gray-700/50' : 'bg-blue-100 text-blue-800'
+                isDark ? 'bg-gray-700/80 text-blue-300 border border-gray-600/50' : 'bg-blue-100 text-blue-800'
               } text-sm font-medium backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-lg`}>
                 🚀 Digital Innovation Experts
               </div>
@@ -137,10 +137,10 @@ const Hero = ({ isDark }: HeroProps) => {
               />
             </div>
             <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full animate-pulse ${
-              isDark ? 'bg-gradient-to-r from-blue-500/10 to-purple-500/10' : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20'
+              isDark ? 'bg-gradient-to-r from-blue-500/15 to-purple-500/15' : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20'
             }`}></div>
             <div className={`absolute -bottom-4 -left-4 w-32 h-32 rounded-full animate-pulse delay-1000 ${
-              isDark ? 'bg-gradient-to-r from-purple-500/10 to-pink-500/10' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'
+              isDark ? 'bg-gradient-to-r from-purple-500/15 to-pink-500/15' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'
             }`}></div>
           </div>
         </div>
