@@ -54,7 +54,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
               <div className={`transition-all duration-500 ${isScrolled ? 'text-xl' : 'text-2xl'} font-bold tracking-tight relative ${isScrolled ? 'h-10' : 'h-12'} flex flex-col justify-center group-hover:${isScrolled ? 'h-10' : 'h-12'}`}>
                 {/* Main Text - enhanced hover effects */}
                 <div className="transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-95">
-                  <span className="text-white transition-all duration-300">Pio</span>
+                  <span className={`transition-all duration-300 ${isDark ? 'text-white' : 'text-black'}`}>Pio</span>
                   <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 bg-clip-text text-transparent group-hover:from-blue-600 group-hover:via-cyan-500 group-hover:to-blue-500 transition-all duration-500">
                     navix
                   </span>
@@ -62,7 +62,7 @@ const Header = ({ isDark, toggleTheme }: HeaderProps) => {
                 
                 {/* Tagline - enhanced animation */}
                 <div className="absolute top-8 left-0 transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:translate-y-2">
-                  <div className="text-xs text-white font-medium whitespace-nowrap transition-all duration-300">
+                  <div className={`text-xs font-medium whitespace-nowrap transition-all duration-300 ${isDark ? 'text-white' : 'text-black'}`}>
                     Innovation • Excellence
                   </div>
                 </div>
