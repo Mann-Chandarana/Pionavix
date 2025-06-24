@@ -61,22 +61,16 @@ const Hero = ({ isDark }: HeroProps) => {
   return (
     <section className={`relative min-h-screen flex items-center transition-all duration-1000 ${
       isDark 
-        ? 'bg-gradient-to-br from-gray-800 via-gray-700 to-slate-800' 
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900' 
         : 'bg-gradient-to-br from-blue-50 via-white to-purple-50'
     }`}>
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className={`absolute top-1/4 left-10 w-32 h-32 rounded-full blur-3xl animate-pulse ${
-          isDark ? 'bg-blue-500/10' : 'bg-blue-500/10'
-        }`}></div>
-        <div className={`absolute bottom-1/4 right-10 w-40 h-40 rounded-full blur-3xl animate-pulse delay-1000 ${
-          isDark ? 'bg-cyan-500/10' : 'bg-cyan-500/10'
-        }`}></div>
-        <div className={`absolute top-3/4 left-1/3 w-24 h-24 rounded-full blur-2xl animate-pulse delay-500 ${
-          isDark ? 'bg-indigo-500/10' : 'bg-indigo-500/10'
-        }`}></div>
+        <div className="absolute top-1/4 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-3/4 left-1/3 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -84,12 +78,12 @@ const Hero = ({ isDark }: HeroProps) => {
           <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <div className={`inline-flex items-center px-4 py-2 rounded-full ${
-                isDark ? 'bg-gray-700/80 text-blue-300 border border-gray-600/50' : 'bg-blue-100 text-blue-800'
+                isDark ? 'bg-blue-900/50 text-blue-300' : 'bg-blue-100 text-blue-800'
               } text-sm font-medium backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-lg`}>
                 🚀 Digital Innovation Experts
               </div>
               <h1 className={`text-5xl lg:text-6xl font-bold leading-tight transition-all duration-700 hover:scale-105 ${
-                isDark ? 'text-gray-100' : 'text-gray-900'
+                isDark ? 'text-white' : 'text-gray-900'
               }`}>
                 Transform Your
                 <br />
@@ -114,15 +108,15 @@ const Hero = ({ isDark }: HeroProps) => {
 
             <div className="flex items-center gap-8 pt-8">
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-100 hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>500+</div>
+                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>500+</div>
                 <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Projects Delivered</div>
               </div>
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-100 hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>98%</div>
+                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>98%</div>
                 <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Client Satisfaction</div>
               </div>
               <div className="transition-all duration-300 hover:scale-110">
-                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-100 hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>5+</div>
+                <div className={`text-3xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-blue-300' : 'text-gray-900 hover:text-blue-600'}`}>5+</div>
                 <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Years Experience</div>
               </div>
             </div>
@@ -136,12 +130,8 @@ const Hero = ({ isDark }: HeroProps) => {
                 className="rounded-2xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:shadow-purple-500/20"
               />
             </div>
-            <div className={`absolute -top-4 -right-4 w-24 h-24 rounded-full animate-pulse ${
-              isDark ? 'bg-gradient-to-r from-blue-500/15 to-purple-500/15' : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20'
-            }`}></div>
-            <div className={`absolute -bottom-4 -left-4 w-32 h-32 rounded-full animate-pulse delay-1000 ${
-              isDark ? 'bg-gradient-to-r from-purple-500/15 to-pink-500/15' : 'bg-gradient-to-r from-purple-500/20 to-pink-500/20'
-            }`}></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse delay-1000"></div>
           </div>
         </div>
       </div>
